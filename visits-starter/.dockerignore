@@ -1,0 +1,9 @@
+node_modules/
+
+.git*
+
+.docker*
+
+Dockerfile*
+
+docker-compose.y*ml
