@@ -1,0 +1,14 @@
+services:
+  frontend:
+    build:
+      context: ./reactapp
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./reactapp:/usr/frontend
+      - /usr/frontend/node_modules
+    ports:
+      - "4000:3000"
+    environment:
+      - HOST=0.0.0.0
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true

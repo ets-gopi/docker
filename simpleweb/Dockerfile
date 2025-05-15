@@ -1,8 +1,9 @@
 # Use official Node.js base image
-FROM node:22.15.0-alpine3.20
+FROM node:22.15.0
 
+ENV CI=true
 # Set working directory
-WORKDIR /usr/app
+WORKDIR /usr/simpleweb
 
 # Copy only package files first (for layer caching)
 COPY package.json ./
