@@ -13,5 +13,8 @@ RUN npm install
 # Now copy the rest of the code
 COPY . .
 
+HEALTHCHECK --interval=10s --timeout=3s --retries=3 \
+CMD curl -f http://localhost:8081/ || exit 1
+
 # Default command
 CMD ["npm", "start"]

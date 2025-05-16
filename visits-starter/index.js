@@ -24,3 +24,9 @@ app.get("/health-check", (req, res) => {
 app.listen(8081, () => {
   console.log("Listening on port 8081");
 });
+
+process.on("SIGINT", () => {
+  console.log("Received SIGINT. Cleaning up...");
+  // cleanup tasks here
+  process.exit(0);
+});
