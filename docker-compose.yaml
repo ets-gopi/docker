@@ -5,10 +5,14 @@ services:
       dockerfile: Dockerfile.dev
     volumes:
       - ./reactapp:/usr/frontend
-      - /usr/frontend/node_modules
+      - /usr/frontend/node_modules/
     ports:
       - "4000:3000"
-    environment:
-      - HOST=0.0.0.0
-      - CHOKIDAR_USEPOLLING=true
-      - WATCHPACK_POLLING=true
+    develop:
+      watch: 
+        - path: ./reactapp
+          action: sync
+          target: /usr/frontend
+          ignore:
+            - node_modules/
+    
