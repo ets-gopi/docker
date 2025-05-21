@@ -1,5 +1,7 @@
+name: testing_dev
 services:
   frontend:
+    container_name: react
     build:
       context: ./reactapp
       dockerfile: Dockerfile.dev
@@ -15,4 +17,11 @@ services:
           target: /usr/frontend
           ignore:
             - node_modules/
-    
+
+networks:
+  default:
+    name: testing_dev_network
+    driver_opts:
+      com.docker.network.bridge.host_binding_ipv4: "127.0.0.1"
+
+
