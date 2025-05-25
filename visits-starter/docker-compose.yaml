@@ -1,8 +1,16 @@
+name: visits
 services:
-  redis-server:
-    image: "redis:8.0-rc1"
   node-app:
+    container_name: expressapp
     restart: always
     build: .
     ports:
       - "4001:8081"
+    depends_on:
+      redis-server:
+        condition: service_started
+        restart: true
+        required: true
+  redis-server:
+    image: "redis:8.0-rc1"
+    container_name: redis
